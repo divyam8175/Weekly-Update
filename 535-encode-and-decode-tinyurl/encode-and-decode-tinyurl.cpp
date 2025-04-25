@@ -1,11 +1,12 @@
 class Solution {
 public:
 unordered_map<string,string>mpp;
-// string en="a";
+string ans="https://urlshortner";
+int i =0;
     // Encodes a URL to a shortened URL.
     string encode(string longUrl) {
-        mpp[longUrl]=longUrl;
-        return longUrl;
+        mpp[ans+to_string(i)]=longUrl;
+        return ans+to_string(i++);
     }
 
     // Decodes a shortened URL to its original URL.
