@@ -1,16 +1,4 @@
-const auto _ =std::cin.tie(nullptr)->sync_with_stdio(false);
-#ifndef _WIN32 && ifndef _WIN64
-const auto __ = []() {
-    struct ___ {
-        static void _() {
-            ofstream("display_runtime.txt") << 0 << '\n';
 
-        }
-    };
-    atexit(&___::_);
-    return 0;
-}();
-#endif
 class Solution {
 public:
     string pushDominoes(string dominoes) {
