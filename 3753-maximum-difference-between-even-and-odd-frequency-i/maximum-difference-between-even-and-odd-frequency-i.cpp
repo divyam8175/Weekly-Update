@@ -3,19 +3,15 @@ public:
     int maxDifference(string s) {
         unordered_map<char,int>mpp;
         for(int i=0;i<s.size();i++) mpp[s[i]]++;
-        vector<int>even;
-        vector<int>odd;
+        int evenmini=INT_MAX;
+        int oddmaxi=INT_MIN;
         for(auto itr:mpp) {
             if(itr.second%2) {
-                odd.push_back(itr.second);
+                oddmaxi=max(oddmaxi,itr.second);
             } else {
-                even.push_back(itr.second);
+                evenmini=min(evenmini,itr.second);
             }
         }
-        sort(even.begin(),even.end());
-        sort(odd.begin(),odd.end());
-        int maxi1=(even[0]-odd[odd.size()-1]);
-        int maxi2=(odd[odd.size()-1]-even[0]);
-        return maxi2;
+        return oddmaxi-evenmini;
     }
 };
