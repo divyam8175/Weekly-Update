@@ -8,7 +8,7 @@ public:
             int a=nums[i];
             int b=nums[i-1];
             int c=nums[i-2];
-            if((a+b > c) && (b+c > a) && (a+c > b)) {
+            if((a+b) > c && b+c > a && a+c > b) {
                 area=max(area,a+b+c);
             }
             i++;
