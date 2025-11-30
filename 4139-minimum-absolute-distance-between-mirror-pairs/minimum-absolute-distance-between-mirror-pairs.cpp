@@ -13,21 +13,18 @@ public:
         if (a.empty() || b.empty())
             return -1;
 
-        sort(b.begin(), b.end()); // sort b for upper_bound
+        sort(b.begin(), b.end());
 
         int best = INT_MAX;
 
         for (int x : a) {
             auto it = upper_bound(b.begin(), b.end(), x);
-            // upper_bound gives first element > x
 
             if (it != b.end()) {
                 best = min(best, abs(*it - x));
                 if (best == 0)
                     return 0;
             }
-            // NOTE: no previous element checking, because we only want just
-            // greater
         }
 
         return (best == INT_MAX ? INT_MAX : best);
