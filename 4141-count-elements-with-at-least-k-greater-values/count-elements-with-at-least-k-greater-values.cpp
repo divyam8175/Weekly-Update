@@ -1,18 +1,20 @@
 class Solution {
 public:
     int countElements(vector<int>& nums, int k) {
-        map<int,int>mpp;
-        int total=nums.size();
-        for(int i=0;i<nums.size();i++) {
-            mpp[nums[i]]++;
-        }
+        sort(nums.begin(),nums.end());
+        if(k==0) return nums.size();
+        int i=0;
+        int j=1;
         int count=0;
-        int size=0;
-        for(auto itr:mpp) {
-            size+=itr.second;
-            if(total-size >= k) {
-                count+=itr.second;
+        while(j<nums.size()) {
+            while(j<nums.size() && nums[i] == nums[j]) {
+                j++;
             }
+            if(nums.size()-j >= k) {
+                count+=(j-i);
+            }
+            i=j;
+            j++;
         }
         return count;
     }
