@@ -1,30 +1,25 @@
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& isConnected) {
-        const int size = isConnected.size();
-        unordered_map<int, vector<int>> mpp;
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < isConnected[i].size(); j++) {
-                if (isConnected[i][j])
-                    mpp[i].push_back(j);
-            }
-        }
+        int n = isConnected.size();
+        vector<int> vis(n, 0);
         int count = 0;
-        vector<int> vis(size, 0);
-        for (int i = 0; i < isConnected.size(); i++) {
-            if (vis[i] == 1) continue;
+
+        for (int i = 0; i < n; i++) {
+            if (vis[i]) continue;
+
             queue<int> q;
             q.push(i);
             vis[i] = 1;
+
             while (!q.empty()) {
                 int u = q.front();
                 q.pop();
 
-                for (auto it : mpp[u]) {
-                    if (vis[it] == 0) {
-                        vis[it] = 1;
-                        if(mpp[it].size())
-                        q.push(it);
+                for (int v = 0; v < n; v++) {
+                    if (isConnected[u][v] == 1 && !vis[v]) {
+                        vis[v] = 1;
+                        q.push(v);
                     }
                 }
             }
