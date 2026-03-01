@@ -12,8 +12,7 @@ public:
         int count = 0;
         vector<int> vis(size, 0);
         for (int i = 0; i < isConnected.size(); i++) {
-            if (vis[i] == 1)
-                continue;
+            if (vis[i] == 1) continue;
             queue<int> q;
             q.push(i);
             vis[i] = 1;
@@ -24,6 +23,7 @@ public:
                 for (auto it : mpp[u]) {
                     if (vis[it] == 0) {
                         vis[it] = 1;
+                        if(mpp[it].size())
                         q.push(it);
                     }
                 }
