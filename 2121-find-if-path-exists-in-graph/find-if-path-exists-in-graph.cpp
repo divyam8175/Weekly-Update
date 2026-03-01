@@ -26,6 +26,7 @@ public:
                 if(vis[it]==0) {
                     q.push(it);
                     vis[it]=1;
+                    if(it==destination) return true;
                 }
             }
         } 
