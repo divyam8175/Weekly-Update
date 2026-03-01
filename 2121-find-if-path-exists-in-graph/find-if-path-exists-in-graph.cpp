@@ -14,6 +14,7 @@ public:
         queue<int>q;
         q.push(source);
         vector<int>vis(n,0);
+        vis[source]=1;
         while(!q.empty()) {
             int u=q.front();
             q.pop();
@@ -21,8 +22,6 @@ public:
             if(u==destination) {
                 return true;
             }
-
-            vis[u]=1;
             for(auto it:mpp[u]) {
                 if(vis[it]==0) {
                     q.push(it);
